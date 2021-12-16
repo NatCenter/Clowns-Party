@@ -1,0 +1,144 @@
+{
+  "requests": [],
+  "Clowns": [
+    {
+      "id": 1,
+      "clownName": "Buttons"
+    },
+    {
+      "id": 2,
+      "clownName": "Lollipop"
+    }
+  ],
+  "DoneParties": [
+    {
+      "id": 1,
+      "partyId": 1,
+      "clownId": 1
+    },
+    {
+      "partyId": 1,
+      "id": 2
+    },
+    {
+      "partyId": 1,
+      "clownId": 1,
+      "id": 3
+    },
+    {
+      "partyId": 1,
+      "id": 4
+    },
+    {
+      "partyId": 1,
+      "id": 5
+    },
+    {
+      "partyId": 1,
+      "clownId": 1,
+      "id": 6
+    },
+    {
+      "partyId": 1,
+      "clownId": 1,
+      "id": 7
+    },
+    {
+      "partyId": 1,
+      "clownId": 1,
+      "id": 8
+    },
+    {
+      "partyId": 2,
+      "id": 9
+    },
+    {
+      "partyId": 3,
+      "clownId": 1,
+      "id": 10
+    },
+    {
+      "partyId": 3,
+      "clownId": 1,
+      "id": 11
+    },
+    {
+      "partyId": 2,
+      "id": 12
+    },
+    {
+      "partyId": 2,
+      "clownId": 1,
+      "id": 13
+    },
+    {
+      "partyId": 2,
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "partyId": 2,
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "partyId": 2,
+      "id": 18
+    },
+    {
+      "partyId": 2,
+      "clownId": 1,
+      "id": 19
+    },
+    {
+      "partyId": 2,
+      "clownId": 1,
+      "id": 20
+    },
+    {
+      "partyId": 2,
+      "clownId": 1,
+      "id": 21
+    },
+    {
+      "partyId": 2,
+      "clownId": 1,
+      "id": 22
+    },
+    {
+      "partyId": 2,
+      "id": 23
+    },
+    {
+      "partyId": 2,
+      "clownId": 2,
+      "id": 24
+    },
+    {
+      "partyId": 2,
+      "clownId": 2,
+      "id": 25
+    },
+    {
+      "partyId": 3,
+      "id": 26
+    },
+    {
+      "partyId": 3,
+      "id": 27
+    },
+    {
+      "partyId": 3,
+      "clownId": 2,
+      "id": 28
+    },
+    {
+      "partyId": 3,
+      "id": 29
+    }
+  ]
+}
