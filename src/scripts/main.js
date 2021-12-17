@@ -18,7 +18,7 @@ const render = () => {
     
 }
 render()
-document.addEventListener(
+mainContainer.addEventListener(
     "stateChange",
     CustomEvent=>{
         render()
