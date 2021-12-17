@@ -14,11 +14,15 @@ return `
 
 
 <h1>Party List</h1>
-
+<h1> Incomplete paries
+</h1>
 <div>
-${Requests()}
-</div>
 
+${Requests()}
+
+</div>
+<h2>complate parties</h2>
+${completedParties()}
 
 `
 }

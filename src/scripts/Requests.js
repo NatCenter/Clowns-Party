@@ -1,6 +1,7 @@
-import { getRequests,setRequest,fetchRequests,sendRequest,deleteRequest,getClowns,sendClownRequest,fetchClowns,sendDoneParties } from "./dataAccess.js";
+import { getRequests,setRequest,fetchRequests,sendRequest,deleteRequest,getClowns,sendClownRequest,fetchClowns,sendDoneParties,getDoneParties } from "./dataAccess.js";
 
 const mainContainer=document.querySelector("container")
+//deleted buttton
 document.addEventListener("click", click => {
     if (click.target.id.startsWith("requests--")) {
         const [,requestId] = click.target.id.split("--")
@@ -8,26 +9,36 @@ document.addEventListener("click", click => {
     }
 })
 //setting the clown drop down id
-const doneParty={};
-document.addEventListener("click",click=>{
-    if(click.target.name==="clownSelect"){
-        doneParty.clownId=parseInt(click.target.value)
-    }
 
-})
+
 //completed button
 document.addEventListener("click",click=>{
-if(click.target.id==="completeParty"){
+if(click.target.id.startsWith("completeParty--")){
+        const [,requestId]=click.target.id.split("--")
+        const clownId=document.querySelector(`select[name='clownSelect--${requestId}']`).value
+        
+    const donePartyObject={
+        partyId:parseInt(requestId),
+        clownId:parseInt(clownId)
 
-    sendDoneParties(doneParty)
+    }
+    if(!donePartyObject.clownId){
+        window.alert("Please select a clown")
+    }
+    else{
+    sendDoneParties(donePartyObject);
+    }
+
+    
 }
 
 
 })
+//need to match the done party id to the request id 
 
 export const convertRequestToListElement=(request)=>{
     const clowns=getClowns()
-doneParty.partyId=request.id
+
 
     return `<div>
        Parents Name: ${request.parentsName}
@@ -36,7 +47,18 @@ doneParty.partyId=request.id
        address: ${request.address}
        hours:${request.lengthOfReservation}
        Date: ${request.dateOfReservation}
-
+       <select name="clownSelect--${request.id}" > 
+       <option> Please select a clown</option>
+       ${clowns.map((clown)=>{
+               return `
+                 <option value="${clown.id}">${clown.clownName}</option> 
+                
+               `
+       
+              
+       })}
+       </select>
+       <button class="request__delete" id="completeParty--${request.id}">Complete</button> 
        <button class="request__delete"
        id="requests--${request.id}"
        > Delete </button>
@@ -47,7 +69,7 @@ doneParty.partyId=request.id
 }
 
 // feature to be added in later 
-{/* <select name="clownSelect"> 
+/* <select name="clownSelect"> 
 <option> Please select a clown</option>
 ${clowns.map((clown)=>{
         return `
@@ -57,15 +79,21 @@ ${clowns.map((clown)=>{
         <button class="request__delete" id="completeParty">Complete</button>
 })}
 
-</select> */}
+</select> */
 
 export const Requests=()=>{
     const requests=getRequests()
-    
+    const parties=getDoneParties()
+    const incompeteRequest=requests.filter((request)=>{
+        if(!parties.find(party=>party.partyId=== request.id)){
+            return request
+        }
+
+    })
 
     let html=`
         <ul>
-            ${requests.map(convertRequestToListElement).join("")}
+            ${incompeteRequest.map(convertRequestToListElement).join("")}
             
         </ul>
     `

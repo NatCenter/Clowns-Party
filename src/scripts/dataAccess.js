@@ -5,6 +5,7 @@ const applicationState={
         requests:[]}
 }
 const API=" http://localhost:8088"
+const mainContainer = document.querySelector("#container")
 
 export const fetchRequests=()=>{
     return fetch (`${API}/requests?_sort=dateOfReservation`)
@@ -37,7 +38,7 @@ export const sendRequest=(userServiceRequest)=>{
     return fetch (`${API}/requests?_sort=dateOfReservation`,fetchOptions)
     .then (response => response.json())
     .then(()=>{
-        document.dispatchEvent(new CustomEvent("stateChange"))
+        mainContainer.dispatchEvent(new CustomEvent("stateChange"))
     })
 
 }
@@ -46,7 +47,15 @@ export const deleteRequest = (id) => {
     return fetch(`${API}/requests/${id}`, { method: "DELETE" })
         .then(
             () => {
-                document.dispatchEvent(new CustomEvent("stateChange"))
+                mainContainer.dispatchEvent(new CustomEvent("stateChange"))
+            }
+        )
+}
+export const deletedPartyRequest = (id) => {
+    return fetch(`${API}/DoneParties/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChange"))
             }
         )
 }
@@ -80,7 +89,7 @@ export const sendClownRequest=(ClownRequestService)=>{
     return fetch(`${API}/Clowns`,fetchOptions)
     .then(clown=>clown.json())
     .then(()=>{
-        document.dispatchEvent(new CustomEvent("stateChange"))
+        mainContainer.dispatchEvent(new CustomEvent("stateChange"))
     })
 
 }
@@ -115,7 +124,7 @@ export const sendDoneParties=(donePartyRequest)=>{
     return fetch(`${API}/DoneParties`,fetchOptions)
     .then(doneParty=>doneParty.json())
     .then(()=>{
-        document.dispatchEvent(new CustomEvent("stateChange"))
+        mainContainer.dispatchEvent(new CustomEvent("stateChange"))
     })
 
 }
