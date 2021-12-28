@@ -68,18 +68,6 @@ export const convertRequestToListElement=(request)=>{
 
 }
 
-// feature to be added in later 
-/* <select name="clownSelect"> 
-<option> Please select a clown</option>
-${clowns.map((clown)=>{
-        return `
-          <option value="${clown.id}">${clown.clownName}</option>  
-        `
-
-        <button class="request__delete" id="completeParty">Complete</button>
-})}
-
-</select> */
 
 export const Requests=()=>{
     const requests=getRequests()
